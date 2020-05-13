@@ -1,0 +1,6 @@
+{
+    "PORT": 3001,
+    "DB": "todo-db",
+    "DB_USER": "johndoe",
+    "DB_PASSWORD": "jdoe123"
+}
