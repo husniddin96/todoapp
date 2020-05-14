@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { FaEdit as FiEdit } from 'react-icons/fa';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import Dialog from './Dialog';
 
@@ -10,7 +9,7 @@ export class TodoItem extends Component {
       background: "#f4f4f4",
       padding: "10px",
       borderBottom: "1px #ccc dotted",
-      textDecoration: this.props.todo.completed ? "line-through" : "none",
+      textDecoration: this.props.todo.isCompleted ? "line-through" : "none",
     };
   };
 
@@ -19,19 +18,23 @@ export class TodoItem extends Component {
   };
 
   render() {
-    const { id, title, completed } = this.props.todo;
+    const id = this.props.todo._id;
+    const { title, isCompleted, createdAt } = this.props.todo;
     return (
       <div style={this.getStyle()}>
         <div>
           <input
             type="checkbox"
-            defaultChecked={completed}
+            defaultChecked={isCompleted}
             onChange={this.props.markComplete.bind(this, id)}
-          />{" "}
-          {title + '  '}
+          />
+          {" "}
+          {title}
+          <span style={{ marginRight: '30%' }}></span>
+          {createdAt}
           {/* <button onClick={this.props.editTodo.bind(this, id)} style={btnStyle2}><FiEdit /></button> */}
           <button onClick={this.props.delTodo.bind(this, id)} style={btnStyle}><RiDeleteBin5Line /></button>
-          <Dialog todo={this.props.todo} style={{float: "right"}} editTodo={this.props.editTodo}/>
+          <Dialog todo={this.props.todo} style={{ float: "right" }} editTodo={this.props.editTodo.bind(this, id, { title })} />
         </div>
       </div>
     );

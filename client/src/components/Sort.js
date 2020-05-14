@@ -22,7 +22,7 @@ export default function Sort(props) {
                 color="primary"
                 size="small"
                 className={classes.button}
-                endIcon={props.sort ? <ExpandMore /> : <ExpandLess />}
+                endIcon={props.sort > -1 ? <ExpandMore /> : <ExpandLess />}
                 onClick={props.changeSort.bind(this)}
             >
                 Sort by created date

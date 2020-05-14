@@ -8,44 +8,40 @@ router.post('/', async (req, res) => {
     const todo = req.body;
     console.log('req.body', req.body);
     await Todo.create(todo);
-    res.json({ msg: 'success' });
+    const todos = await Todo.find();
+    res.json({ todos });
 })
 
 router.get('/', async (req, res) => {
     let todos;
-    let sort = {};
-    
-    if (req.query.sort && req.query.orderBy) {
-        sort[req.query.sort] = req.query.orderBy === 'desc' ? -1 : 1;
-        todos = await Todo.find().sort(sort);
-    }else{
-        todos = await Todo.find();
+
+    if (req.query.sort == -1) {
+        todos = await _getTodos(-1)
+    } else {
+        todos = await _getTodos();
     }
-
-    console.log({todos});
-    res.json(todos);
-});
-
-router.get('/stats', async (req, res) => {
-    const completedCount = await Todo.find({ isCompleted: true }).countDocuments();
-    const unCompletedCount = await Todo.find({ isCompleted: false }).countDocuments();
-    res.json({ completedCount, unCompletedCount });
+    console.log({ todos });
+    res.json({ todos });
 });
 
 router.get('/:id', async (req, res) => {
     const todo = await Todo.findById(req.params.id);
-    res.json(todo);
+    res.json({ todo });
 });
 
 router.put('/:id', async (req, res) => {
     const todo = req.body;
     await Todo.findByIdAndUpdate(req.params.id, { $set: { ...todo } });
-    res.json({ msg: 'success' });
+    res.json({ todos: await _getTodos() });
 });
 
 router.delete('/:id', async (req, res) => {
     await Todo.findByIdAndDelete(req.params.id)
-    res.json({ msg: 'success' });
+    res.json({ todos: await _getTodos() });
 });
+
+_getTodos = (sort = null) => {
+    return sort == -1 ? Todo.find().sort({ createdAt: -1 }) : Todo.find();
+}
 
 module.exports = router;
