@@ -2,7 +2,7 @@
 
 ## Getting started
 
-## Used technologies
+### Used technologies
   Backend:
  * [NodeJS](https://nodejs.org)
  * [Express](https://expressjs.com)
@@ -13,7 +13,7 @@ Frontend:
  * [ReactJS](https://reactjs.org)
 
 
-## Project Sturcture (Folders & Files)
+### Project Sturcture (Folders & Files)
 
 ```
 ├── server
@@ -29,7 +29,7 @@ Frontend:
 └── ...
 ```
 
-## Deployment
+### Deployment
 
 Clone the repository
 
@@ -60,7 +60,7 @@ npm start
 
 By default client app runs on port ```3000``` and backend runs on ```3001```. You can change this from config file.
 
-## Following requests are implemented in this project
+### Following requests are implemented in this project
 
 !NOTE: Data exchange format is JSON. Here are sample requests:
 
