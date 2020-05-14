@@ -62,7 +62,7 @@ By default client app runs on port ```3000``` and backend runs on ```3001```. Yo
 
 ### Following requests are implemented in this project
 
-!NOTE: Data exchange format is JSON. Here are sample requests:
+!NOTE: Data exchange format is JSON
 
 'login' request:
 
