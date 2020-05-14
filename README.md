@@ -1,5 +1,7 @@
 # ToDo App
 
+## Getting started
+
 ## Used technologies
   Backend:
  * [NodeJS](https://nodejs.org)
@@ -11,7 +13,6 @@ Frontend:
  * [ReactJS](https://reactjs.org)
 
 
-## Getting started
 ## Project Sturcture (Folders & Files)
 
 ```
