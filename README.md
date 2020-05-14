@@ -47,7 +47,7 @@ cd ..
 cd server
 npm i
 ```
-
+Run commands
 
 ```bash
 cd todoapp
@@ -57,7 +57,14 @@ cd ..
 cd server
 npm start
 ```
+Sample user credentials:
 
+```json
+{
+   "login": "johndoe",
+   "password": "jdoe123"
+}
+```
 By default client app runs on port ```3000``` and backend runs on ```3001```. You can change this from config file.
 
 ### Following requests are implemented in this project
