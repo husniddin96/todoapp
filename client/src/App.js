@@ -23,23 +23,15 @@ class App extends Component {
     axios
       .get(`${config.BASE_URL}/todo`)
       .then(res => {
-        console.log(res);
         this.setState({ todos: res.data.todos })
       });
   }
 
 
   login = (login, password) => {
-    console.log({ login, password });
-
     axios.post(`${config.BASE_URL}/login`, { login, password })
       .then(res => {
-        console.log({ res })
-
         res.data.success ? this.setState({ access: res.data.success }) : this.setState({ incorrectCredentials: true })
-
-        console.log('new access', this.state.access);
-
       }
       )
   }
@@ -77,8 +69,6 @@ class App extends Component {
   };
 
   changeSort = () => {
-    console.log('changesort')
-
     this.setState({
       sort: this.state.sort * -1,
     });
@@ -92,8 +82,6 @@ class App extends Component {
   }
 
   editTodo = async (id, todo) => {
-    console.log('EDIT TODO WORKED!', { id, todo });
-
     await axios.put(`${config.BASE_URL}/todo/${id}`, todo)
       .then(async res => await this.setState({ todos: res.data.todos }));
   }

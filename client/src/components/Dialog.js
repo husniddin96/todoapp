@@ -22,8 +22,6 @@ export default function FormDialog(props) {
   };
 
   const handleTitle = (event) => {
-    console.log('handlechange', event.target.value)
-    console.log({props})
     setTitle(event.target.value);
     setId(props.todo.id);
   }
@@ -51,7 +49,7 @@ export default function FormDialog(props) {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={props.editTodo.bind(this, id, {id, title: title })} onMouseDown={handleClose} color="primary">
+          <Button onClick={props.editTodo.bind(this, props.todo._id, {id, title: title })} onMouseDown={handleClose} color="primary">
             Save
           </Button>
         </DialogActions>

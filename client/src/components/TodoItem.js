@@ -13,9 +13,6 @@ export class TodoItem extends Component {
     };
   };
 
-  componentDidMount = (props) => {
-    console.log(this.props.todo);
-  };
 
   render() {
     const id = this.props.todo._id;
@@ -34,7 +31,7 @@ export class TodoItem extends Component {
           {createdAt}
           {/* <button onClick={this.props.editTodo.bind(this, id)} style={btnStyle2}><FiEdit /></button> */}
           <button onClick={this.props.delTodo.bind(this, id)} style={btnStyle}><RiDeleteBin5Line /></button>
-          <Dialog todo={this.props.todo} style={{ float: "right" }} editTodo={this.props.editTodo.bind(this, id, { title })} />
+          <Dialog todo={this.props.todo} style={{ float: "right" }} editTodo={this.props.editTodo} />
         </div>
       </div>
     );

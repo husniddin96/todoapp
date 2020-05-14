@@ -7,9 +7,10 @@ const User = mongoose.model('User');
 router.post('/', async (req, res) => {
     console.log('worked login', req.body);
 
-    const user = await User.find({ login, password });
-    
-    if (user) {
+    const { login, password } = req.body;
+    const count = await User.find({ login, password }).countDocuments();
+
+    if (count > 0) {
         res.json({ success: true })
     } else {
         res.json({ success: false });
